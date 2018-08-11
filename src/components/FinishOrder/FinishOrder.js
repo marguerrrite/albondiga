@@ -4,13 +4,6 @@ import PropTypes from 'prop-types';
 import './FinishOrder.css';
 
 class FinishOrder extends Component {
-    state = {
-        form: {
-            formAction: [],
-            formMethod: []
-        }
-    }
-
     static propTypes = {
         menuStepForward: PropTypes.func,
         order: PropTypes.object,
@@ -72,7 +65,7 @@ class FinishOrder extends Component {
                         <form
                             ref={(el => this.form = el)}
                             className="FinishOrderForm"
-                            action="https://formspree.io/rigatonispachoni@gmail.com"
+                            action="https://formspree.io/mdzvggkm"
                             method="POST"
                             >
                             <textarea
