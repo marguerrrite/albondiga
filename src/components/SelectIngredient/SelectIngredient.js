@@ -97,7 +97,7 @@ class SelectIngredient extends Component {
                 </div>
                 <div
                     onClick={this.props.menuStepForward}
-                    className={classNames(`arrow__wrapper`, { 'arrow__wrapper--disabled': !order[type].name })}>
+                    className={classNames(`arrow__wrapper arrow__wrapper--right`, { 'arrow__wrapper--disabled': !order[type].name })}>
                     <svg
                         className="arrow arrow--right"
                         x="0px" y="0px" width="32.1px"

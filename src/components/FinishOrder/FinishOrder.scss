@@ -8,6 +8,10 @@
     padding-left: 2.5em;
     padding-right: 2.5em;
 
+    @media(max-width: 550px) {
+        grid-column: 1 / -1;
+    }
+
     &__wrapper {
         width: 100%;
         max-width: 1000px;

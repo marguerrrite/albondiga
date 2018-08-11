@@ -77,11 +77,23 @@ h2 {
     stroke: rgba($black, 0.25);
     transition: all 100ms ease-in-out;
 
+    @media(max-width: 550px) {
+        width: 18px;
+    }
+
     &--right {
         transform: rotate(180deg);
     }
 
     &__wrapper {
+        &--right {
+            @media(max-width: 550px) {
+                text-align: right;
+                grid-column: 3 / -1;
+                grid-row: 1;
+            }
+        }
+
         &--disabled {
             pointer-events: none;
             transition: all 200ms ease-out;
