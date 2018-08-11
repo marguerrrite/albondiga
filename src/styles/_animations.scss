@@ -1,0 +1,74 @@
+.OrderItem__Transition-enter {
+    transform: translateX(-120%);
+    transition: 0.5s;
+    max-height: 0;
+    padding: 0 !important;
+
+    &.OrderItem__Transition-enter-active {
+        max-height: 60px;
+        transform: translateX(0);
+        padding: 2rem 0 !important;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        pointer-events: none;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes fadeLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(3590deg);
+    }
+}
+
+// @keyframes spin {
+//     from {
+//         transform: rotate(0deg);
+//     }
+//     to {
+//         transform: rotateZ(3600deg);
+//     }
+// }

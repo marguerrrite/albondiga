@@ -1,0 +1,14 @@
+@import "../../../styles/lib.scss";
+
+.Link {
+    color: rgba($black, 0.35);
+    font-size: 0.85em;
+    font-weight: 500;
+    padding: 0.15em 0.75em;
+    border-radius: 10px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba($black, 0.075);
+    }
+}

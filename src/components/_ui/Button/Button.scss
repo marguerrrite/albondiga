@@ -1,0 +1,56 @@
+@import "../../../styles/lib.scss";
+
+.Button {
+    display: inline-flex;
+    align-items: center;
+    padding: 11px 22px 12px;
+    border-radius: 2em;
+    box-shadow: none;
+    font-weight: 500;
+    margin: 0 1.25em;
+    margin-bottom: 0.7em;
+    transition: all 200ms ease-out;
+    color: darken($blue, 1%);
+    background-color: rgba($blue, 0.07);
+    border: 1px solid rgba($blue, 0.6);
+    font-size: 1em;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: all 200ms ease-out;
+        background-color: rgba($blue, 0.15);
+    }
+
+    &:active,
+    &:focus,
+    &--clicked {
+        transition: all 200ms ease-out;
+        background-color: rgba($blue, 0.25);
+        outline: none;
+    }
+
+    &__icon {
+        font-size: 1.1em;
+        opacity: 0.3;
+        margin: 0 5px 0 -5px;
+
+        &--forward {
+            margin: 0 -5px 0 5px;
+        }
+    }
+
+    &__emoji {
+        margin-right: 0.25em;
+        padding-top: 2px;
+    }
+
+    &--disabled {
+        opacity: 0.6;
+        color: $grey-dark;
+        background-color: $grey-light;
+        border-color: $grey;
+        pointer-events: none;
+        transition: all 200ms ease-out;
+    }
+}

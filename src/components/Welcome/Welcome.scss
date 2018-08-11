@@ -1,0 +1,31 @@
+@import "../../styles/lib.scss";
+
+.Welcome {
+    width: 100%;
+    max-width: 1000px;
+    padding: $padding-horizontal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 1s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+
+    &__greeting {
+        margin-bottom: 0;
+    }
+
+    &__phrase {
+        font-weight: 400;
+    }
+
+    &__actions {
+        margin-top: 2em;
+        //animation-delay: 0s;
+        animation: fadeIn 1s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        animation-delay: 2s;
+    }
+}

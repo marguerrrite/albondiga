@@ -1,0 +1,28 @@
+@import "../../styles/lib.scss";
+
+.Spinner {
+    animation: spin 20s infinite linear;
+    transition: all 100ms ease-in-out;
+
+    &__wrapper {
+        animation: fadeIn 1s;
+        //animation-delay: 1.5s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+
+    img {
+        width: 100px;
+        transition: all 100ms ease-in-out;
+
+        &:hover {
+            transform: scale(2);
+            transition: all 200ms ease-in-out;
+        }
+    }
+
+    &:hover {
+        animation-play-state: paused;
+        cursor: pointer;
+    }
+}

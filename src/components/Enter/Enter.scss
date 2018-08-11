@@ -1,0 +1,17 @@
+@import "../../styles/lib.scss";
+
+.Enter {
+    height: 100%;
+
+    .content {
+        height: 100%;
+    }
+
+    &__form {
+        display: none;
+    }
+
+    .Spinner__wrapper {
+        margin-bottom: 2em;
+    }
+}
