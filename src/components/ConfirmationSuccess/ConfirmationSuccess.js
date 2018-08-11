@@ -16,9 +16,19 @@ class ConfirmationSuccess extends Component {
     render() {
         return (
             <div className="ConfirmationSuccess">
-                <h3 className="ConfirmationSuccess__phrase">
-                    That's it! I hope you enjoyed this little app. Happy birthday and I love you.
-                </h3>
+                <span className="emoji" role="img"
+                    aria-label="Spaghetti">
+                    🍝
+                </span>
+                <h2 className="ConfirmationSuccess__greeting">
+                    That's it!
+                </h2>
+                <h4 className="ConfirmationSuccess__phrase">
+                   I'll will cook the dinner per your requests.
+                </h4>
+                <h4 className="ConfirmationSuccess__phrase">
+                    I hope you enjoyed this little app. <br/> Happy birthday and I love you.
+                </h4>
                 <div className="ConfirmationSuccess__actions">
                     <Button
                         onClick={this.handleClick}>

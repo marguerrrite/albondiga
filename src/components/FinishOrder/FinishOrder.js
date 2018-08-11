@@ -72,7 +72,7 @@ class FinishOrder extends Component {
                         <form
                             ref={(el => this.form = el)}
                             className="FinishOrderForm"
-                            action="https://formspree.io/rigatonispachoni@gmail.com"
+                            action="https://formspree.io/xyjawkjm"
                             method="POST"
                             >
                             <textarea

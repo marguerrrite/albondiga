@@ -2,7 +2,7 @@
 
 .ConfirmationSuccess {
     width: 100%;
-    max-width: 420px;
+    max-width: 340px;
     padding: $padding-horizontal;
     display: flex;
     flex-direction: column;
@@ -14,12 +14,14 @@
     animation-delay: 500ms;
 
     &__greeting {
-        margin-bottom: 0;
+        margin-bottom: 1.5em;
     }
 
     &__phrase {
         font-weight: 600;
-        line-height: 1.4;
+        line-height: 1.5;
+        margin-top: 0;
+        margin-bottom: 2em;
 
         span {
             color: $red;
