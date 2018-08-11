@@ -1,9 +1,9 @@
 🍝
-#Albondiga
-###A dinner selection app
+# Albondiga
+### A dinner selection app
 
 
-######Tools used
+###### Tools used
 * React
 * Node
 * SCSS
