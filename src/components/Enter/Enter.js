@@ -17,7 +17,7 @@ class Enter extends Component {
         return (
             <div className="Enter">
                 <div className="content">
-                <form onSubmit={this.goToMenu} className="Enter__form">
+                    <form onSubmit={this.goToMenu} className="Enter__form">
                         <input
                             type="text"
                             ref={this.myInput}
