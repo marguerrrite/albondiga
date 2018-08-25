@@ -5,6 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="theme-color" content="#000000">
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+        <link rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/favicon.png">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28982804-1"></script>
+        <script>
+            var host = window.location.hostname;
+            if (host != "localhost") {
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+
+                gtag('config', 'UA-28982804-1');
+            }
+        </script>
         <title>Albondiga</title>
     </head>
     <body>
