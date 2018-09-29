@@ -82,50 +82,61 @@ class AppContainer extends Component {
         this.setState({ currentMenuStep, order });
     }
 
-    setPasta = (name, emoji, type, menuStepId) => {
+    setOrderItem = (name, emoji, type, menuStepId) => {
         const order = { ...this.state.order };
-        order.pasta = { name: name, emoji: emoji, type: type, menuStepId: menuStepId };
-        this.setState({ order });
-    };
-
-
-    setSauce = (name, emoji, type, menuStepId) => {
-        const order = { ...this.state.order };
-        order.sauce = { name: name, emoji: emoji, type: type, menuStepId: menuStepId };
-        this.setState({ order });
-    };
-
-    setMeat = (name, emoji, type, menuStepId) => {
-        const order = { ...this.state.order };
-        order.meat = { name: name, emoji: emoji, type: type, menuStepId: menuStepId };
-        this.setState({ order });
-    };
-
-    setSide = (name, emoji, type, menuStepId) => {
-        const order = { ...this.state.order };
-        order.side = { name: name, emoji: emoji, type: type, menuStepId: menuStepId };
-        this.setState({ order });
-    };
-
-    setDrink = (name, emoji, type, menuStepId) => {
-        const order = { ...this.state.order };
-        order.drink = { name: name, emoji: emoji, type: type, menuStepId: menuStepId };
-        this.setState({ order });
-    };
-
-    setDessert = (name, emoji, type, menuStepId) => {
-        const order = { ...this.state.order };
-        order.dessert = { name: name, emoji: emoji, type: type, menuStepId: menuStepId };
+        order[type] = { name: name, emoji: emoji, type: type, menuStepId: menuStepId };
         this.setState({ order });
     };
 
     render() {
         const { currentMenuStep, menuChoices, order } = this.state;
+        const steps = [
+            {
+                name: "start",
+                menuStepId: 0,
+            },
+            {
+                name: "intro",
+                menuStepId: 1,
+            }, {
+                name: "pasta",
+                isIngredientStep: true,
+                menuStepId: 2,
+            }, {
+                name: "sauce",
+                isIngredientStep: true,
+                menuStepId: 3,
+            }, {
+                name: "meat",
+                isIngredientStep: true,
+                menuStepId: 4,
+            }, {
+                name: "side",
+                isIngredientStep: true,
+                menuStepId: 5,
+            }, {
+                name: "drink",
+                isIngredientStep: true,
+                menuStepId: 6,
+            }, {
+                name: "dessert",
+                isIngredientStep: true,
+                menuStepId: 7,
+            }, {
+                name: "finish",
+                menuStepId: 8,
+            }, {
+                name: "success",
+                menuStepId: 9,
+            }
+        ];
+        //const currentStep = steps[currentMenuStepId];
 
         return (
+
             <div className="AppContainer">
                 <div className="content">
-                    {currentMenuStep === 0 && (
+                    {/* {currentMenuStep === 0 && (
                         <Welcome
                             currentMenuStep={currentMenuStep}
                             menuStepId={0}
@@ -140,116 +151,66 @@ class AppContainer extends Component {
                             menuStepForward={this.menuStepForward}
                             menuStepBack={this.menuStepBack}
                         />
-                    )}
-                    {currentMenuStep === 2 && (
-                        <SelectIngredient
-                            type="pasta"
-                            phrase={menuChoices.pasta.phrase}
-                            selections={menuChoices.pasta.choices}
-                            order={order}
-                            setMenuChoice={this.setPasta}
-                            clearMenuChoice={this.clearMenuChoice}
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={2}
-                            menuStepForward={this.menuStepForward}
-                            menuStepBack={this.menuStepBack}
-                            menu={menuChoices}
-                        />
-                    )}
-                    {currentMenuStep === 3 && (
-                        <SelectIngredient
-                            type="sauce"
-                            phrase={menuChoices.sauce.phrase}
-                            selections={menuChoices.sauce.choices}
-                            order={order}
-                            setMenuChoice={this.setSauce}
-                            clearMenuChoice={this.clearMenuChoice}
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={3}
-                            menuStepForward={this.menuStepForward}
-                            menuStepBack={this.menuStepBack}
-                            menu={menuChoices}
-                        />
-                    )}
-                    {currentMenuStep === 4 && (
-                        <SelectIngredient
-                            type="meat"
-                            phrase={menuChoices.meat.phrase}
-                            selections={menuChoices.meat.choices}
-                            order={order}
-                            setMenuChoice={this.setMeat}
-                            clearMenuChoice={this.clearMenuChoice}
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={4}
-                            menuStepForward={this.menuStepForward}
-                            menuStepBack={this.menuStepBack}
-                            menu={menuChoices}
-                        />
-                    )}
-                    {currentMenuStep === 5 && (
-                        <SelectIngredient
-                            type="side"
-                            phrase={menuChoices.side.phrase}
-                            selections={menuChoices.side.choices}
-                            order={order}
-                            setMenuChoice={this.setSide}
-                            clearMenuChoice={this.clearMenuChoice}
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={5}
-                            menuStepForward={this.menuStepForward}
-                            menuStepBack={this.menuStepBack}
-                            menu={menuChoices}
-                        />
-                    )}
-                    {currentMenuStep === 6 && (
-                        <SelectIngredient
-                            type="drink"
-                            phrase={menuChoices.drink.phrase}
-                            selections={menuChoices.drink.choices}
-                            order={order}
-                            setMenuChoice={this.setDrink}
-                            clearMenuChoice={this.clearMenuChoice}
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={6}
-                            menuStepForward={this.menuStepForward}
-                            menuStepBack={this.menuStepBack}
-                            menu={menuChoices}
-                        />
-                    )}
-                    {currentMenuStep === 7 && (
-                        <SelectIngredient
-                            type="dessert"
-                            phrase={menuChoices.dessert.phrase}
-                            selections={menuChoices.dessert.choices}
-                            order={order}
-                            setMenuChoice={this.setDessert}
-                            clearMenuChoice={this.clearMenuChoice}
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={7}
-                            menuStepForward={this.menuStepForward}
-                            menuStepBack={this.menuStepBack}
-                            menu={menuChoices}
-                        />
-                    )}
-                    {currentMenuStep === 8 && (
-                        <FinishOrder
-                            order={order}
-                            clearMenuChoice={this.clearMenuChoice}
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={8}
-                            menuStepForward={this.menuStepForward}
-                            menuStepBack={this.menuStepBack}
-                            menu={menuChoices}
-                        />
-                    )}
-                    {currentMenuStep === 9 && (
-                        <ConfirmationSuccess
-                            clearOrder={this.clearOrder}
-                            order={order}
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={9}
-                        />
-                    )}
+                    )} */}
+                    {steps.map(step => (
+                        step.isIngredientStep ? (
+                            <div>
+                                {step.menuStepId === currentMenuStep && (
+                                    <SelectIngredient
+                                        type={step.name}
+                                        phrase={menuChoices[step.name].phrase}
+                                        selections={menuChoices[step.name].choices}
+                                        order={order}
+                                        setMenuChoice={this.setOrderItem}
+                                        clearMenuChoice={this.clearMenuChoice}
+                                        currentMenuStep={currentMenuStep}
+                                        menuStepId={step.menuStepId}
+                                        menuStepForward={this.menuStepForward}
+                                        menuStepBack={this.menuStepBack}
+                                        menu={menuChoices}
+                                    />
+                                )}
+                            </div>
+                        ) : (
+                            <div>
+                                {step.menuStepId === currentMenuStep && currentMenuStep === 0 && (
+                                    <Welcome
+                                        currentMenuStep={currentMenuStep}
+                                        menuStepId={0}
+                                        menuStepForward={this.menuStepForward}
+                                        menu={menuChoices}
+                                    />
+                                )}
+                                {step.menuStepId === currentMenuStep && currentMenuStep === 1 && (
+                                    <Intro
+                                        currentMenuStep={currentMenuStep}
+                                        menuStepId={1}
+                                        menuStepForward={this.menuStepForward}
+                                        menuStepBack={this.menuStepBack}
+                                    />
+                                )}
+                                {step.menuStepId === currentMenuStep && currentMenuStep === 8 && (
+                                    <FinishOrder
+                                        order={order}
+                                        clearMenuChoice={this.clearMenuChoice}
+                                        currentMenuStep={currentMenuStep}
+                                        menuStepId={8}
+                                        menuStepForward={this.menuStepForward}
+                                        menuStepBack={this.menuStepBack}
+                                        menu={menuChoices}
+                                    />
+                                )}
+                                {step.menuStepId === currentMenuStep && currentMenuStep === 9 && (
+                                    <ConfirmationSuccess
+                                        clearOrder={this.clearOrder}
+                                        order={order}
+                                        currentMenuStep={currentMenuStep}
+                                        menuStepId={9}
+                                    />
+                                )}
+                            </div>
+                        )
+                    ))}
                 </div>
                 {currentMenuStep > 1 && currentMenuStep < 9 && (
                     <Order order={order}

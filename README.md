@@ -5,9 +5,9 @@
 
 [Live demo](https://marguerite.io/albondiga/)
 
-I developed this project as a birthday gift for someone who loves spaghetti
-and meatballs. The recipient can pick the ingredients making up a spaghetti and
-meatballs dinner: pasta type, sauce, drinks, etc.
+I made this little project for someone who loves spaghetti
+and meatballs. The recipient can pick the ingredients making
+up a spaghetti and meatballs dinner: pasta type, sauce, drinks, etc.
 
 ![image](https://user-images.githubusercontent.com/5288685/44005732-4d8b114c-9e46-11e8-87e7-713635fd0e00.png)
 
