@@ -23,12 +23,12 @@ class ConfirmationSuccess extends Component {
                 <h2 className="ConfirmationSuccess__greeting">
                     That's it!
                 </h2>
-                <h4 className="ConfirmationSuccess__phrase">
+                {/* <h4 className="ConfirmationSuccess__phrase">
                    I'll will cook the dinner per your requests.
-                </h4>
-                <h4 className="ConfirmationSuccess__phrase">
+                </h4> */}
+                {/* <h4 className="ConfirmationSuccess__phrase">
                     I hope you enjoyed this little app. <br/> Happy birthday and I love you.
-                </h4>
+                </h4> */}
                 <div className="ConfirmationSuccess__actions">
                     <Button
                         onClick={this.handleClick}>

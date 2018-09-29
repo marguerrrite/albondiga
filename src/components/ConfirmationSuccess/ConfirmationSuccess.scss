@@ -11,7 +11,7 @@
     animation: fadeUp 1s;
     opacity: 0;
     animation-fill-mode: forwards;
-    animation-delay: 500ms;
+    //animation-delay: 500ms;
 
     &__greeting {
         margin-bottom: 1.5em;
@@ -31,7 +31,7 @@
     &__actions {
         margin-top: 2em;
         animation: fadeIn 1s;
-        animation-delay: 5.5s;
+        animation-delay: 0.5s;
         opacity: 0;
         animation-fill-mode: forwards;
         display: inline-flex;

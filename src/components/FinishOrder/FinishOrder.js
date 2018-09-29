@@ -12,7 +12,7 @@ class FinishOrder extends Component {
 
     submitForm = () => {
         this.props.menuStepForward();
-        this.form.submit();
+        //this.form.submit(); No more form! Not paying for formspree anymore.
         //update state before submitting form so that when
         //formspree pops you back, the state is already updated
     }

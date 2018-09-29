@@ -43,7 +43,7 @@ class SelectIngredient extends Component {
 
 
     render() {
-        const { order, type } = this.props;
+        const { order, selections, type } = this.props;
         return (
             <div className="SelectIngredient__wrapper">
                 <div
@@ -61,7 +61,7 @@ class SelectIngredient extends Component {
                         {this.props.phrase}
                     </h2>
                     <div className="SelectIngredient__choices">
-                        {Object.keys(this.props.selections).map((key) =>
+                        {Object.keys(selections).map((key) =>
                             <IngredientOption
                                 onClick={this.onClickSet}
                                 key={key}
@@ -87,9 +87,6 @@ class SelectIngredient extends Component {
                                 <span>Add to order</span>
                             )}
                         </Button>
-                        {/* <Link onClick={this.props.menuStepBack}>
-                            Back
-                        </Link> */}
                         <Link onClick={this.onClickClear}>
                             Clear {type} selection
                         </Link>
