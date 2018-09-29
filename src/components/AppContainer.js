@@ -136,22 +136,6 @@ class AppContainer extends Component {
 
             <div className="AppContainer">
                 <div className="content">
-                    {/* {currentMenuStep === 0 && (
-                        <Welcome
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={0}
-                            menuStepForward={this.menuStepForward}
-                            menu={menuChoices}
-                        />
-                    )}
-                    {currentMenuStep === 1 && (
-                        <Intro
-                            currentMenuStep={currentMenuStep}
-                            menuStepId={1}
-                            menuStepForward={this.menuStepForward}
-                            menuStepBack={this.menuStepBack}
-                        />
-                    )} */}
                     {steps.map(step => (
                         step.isIngredientStep ? (
                             <div>
