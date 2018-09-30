@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import OrderItem from "../OrderItem/OrderItem";
-//import Link from "../_ui/Link/Link";
+import OrderItem from "components/OrderItem/OrderItem";
+//import Link from "components/_ui/Link/Link";
 import "./Order.css";
 
 class Order extends Component {

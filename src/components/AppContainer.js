@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import base from "../base";
-import FinishOrder from "./FinishOrder/FinishOrder";
-import Intro from "./Intro/Intro"
-import Order from "./Order/Order";
-import SelectIngredient from "./SelectIngredient/SelectIngredient";
-import Welcome from "./Welcome/Welcome";
+import FinishOrder from "components/FinishOrder/FinishOrder";
+import Intro from "components/Intro/Intro"
+import Order from "components/Order/Order";
+import SelectIngredient from "components/SelectIngredient/SelectIngredient";
+import Welcome from "components/Welcome/Welcome";
 import menu from "../menu";
 import '../styles/global.css';
 import ConfirmationSuccess from './ConfirmationSuccess/ConfirmationSuccess';
@@ -25,8 +25,8 @@ class AppContainer extends Component {
 
     componentDidMount() {
         const { params } = this.props.match;
-        const localStorageRefOrder = localStorage.getItem(`${this.props.match.params.albondigaId}-order`);
-        const localStorageRefCurrentMenuStep = localStorage.getItem(`${this.props.match.params.albondigaId}-currentMenuStep`);
+        const localStorageRefOrder = localStorage.getItem(`${params.albondigaId}-order`);
+        const localStorageRefCurrentMenuStep = localStorage.getItem(`${params.albondigaId}-currentMenuStep`);
 
         if (localStorageRefOrder || localStorageRefCurrentMenuStep) {
             this.setState({ order: JSON.parse(localStorageRefOrder) });
@@ -42,8 +42,9 @@ class AppContainer extends Component {
     }
 
     componentDidUpdate() {
-        localStorage.setItem(`${this.props.match.params.albondigaId}-order`, JSON.stringify(this.state.order));
-        localStorage.setItem(`${this.props.match.params.albondigaId}-currentMenuStep`, JSON.stringify(this.state.currentMenuStep));
+        const { params } = this.props.match;
+        localStorage.setItem(`${params.albondigaId}-order`, JSON.stringify(this.state.order));
+        localStorage.setItem(`${params.albondigaId}-currentMenuStep`, JSON.stringify(this.state.currentMenuStep));
     }
 
     componentWillUnmount() {

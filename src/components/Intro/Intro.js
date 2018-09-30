@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from "../_ui/Button/Button";
-import Link from "../_ui/Link/Link";
+import Button from "components/_ui/Button/Button";
+import Link from "components/_ui/Link/Link";
 import './Intro.css';
 
 class Intro extends Component {

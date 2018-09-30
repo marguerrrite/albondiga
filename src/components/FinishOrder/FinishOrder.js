@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from "../_ui/Button/Button";
+import Button from "components/_ui/Button/Button";
 import PropTypes from 'prop-types';
 import './FinishOrder.css';
 

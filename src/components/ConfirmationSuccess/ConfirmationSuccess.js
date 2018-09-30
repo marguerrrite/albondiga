@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from "../_ui/Button/Button";
+import Button from "components/_ui/Button/Button";
 import './ConfirmationSuccess.css';
 
 class ConfirmationSuccess extends Component {

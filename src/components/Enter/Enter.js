@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Spinner from "../Spinner/Spinner";
+import Spinner from "components/Spinner/Spinner";
 
 import { getFunName } from "../../helpers";
 import './Enter.css';
