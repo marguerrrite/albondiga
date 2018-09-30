@@ -52,14 +52,7 @@ class FinishOrder extends Component {
                         <span> {order.meat.name}</span>,
                         <span> {order.side.name}</span>,
                         <span> {order.drink.name}</span>,
-                        and
-                        {order.dessert.name === "surprise me" && (
-                            <span> a surprise </span>
-                        )}
-                        {order.dessert.name !== "surprise me" && (
-                            <span> {order.dessert.name} </span>
-                        )}
-                        for desssert.
+                        {order.dessert.name === "surprise me" ? "a surprise" : order.dessert.name}
                     </h2>
                     <div className="FinishOrder__actions">
                         <form
