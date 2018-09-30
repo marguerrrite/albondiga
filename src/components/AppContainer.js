@@ -64,9 +64,7 @@ class AppContainer extends Component {
     };
 
     jumpToMenuStep = (step) => {
-        let currentMenuStep = { ...this.state.currentMenuStep }
-        currentMenuStep = step;
-        this.setState({ currentMenuStep });
+        this.setState({ currentMenuStep: step });
     }
 
     clearMenuChoice = (currentMenuStep) => {
@@ -85,7 +83,7 @@ class AppContainer extends Component {
 
     setOrderItem = (name, emoji, type, menuStepId) => {
         const order = { ...this.state.order };
-        order[type] = { name: name, emoji: emoji, type: type, menuStepId: menuStepId };
+        order[type] = { name, emoji, type, menuStepId };
         this.setState({ order });
     };
 
@@ -94,41 +92,31 @@ class AppContainer extends Component {
         const steps = [
             {
                 name: "start",
-                menuStepId: 0,
             },
             {
                 name: "intro",
-                menuStepId: 1,
             }, {
                 name: "pasta",
                 isIngredientStep: true,
-                menuStepId: 2,
             }, {
                 name: "sauce",
                 isIngredientStep: true,
-                menuStepId: 3,
             }, {
                 name: "meat",
                 isIngredientStep: true,
-                menuStepId: 4,
             }, {
                 name: "side",
                 isIngredientStep: true,
-                menuStepId: 5,
             }, {
                 name: "drink",
                 isIngredientStep: true,
-                menuStepId: 6,
             }, {
                 name: "dessert",
                 isIngredientStep: true,
-                menuStepId: 7,
             }, {
                 name: "finish",
-                menuStepId: 8,
             }, {
                 name: "success",
-                menuStepId: 9,
             }
         ];
         //const currentStep = steps[currentMenuStepId];
@@ -137,10 +125,10 @@ class AppContainer extends Component {
 
             <div className="AppContainer">
                 <div className="content">
-                    {steps.map(step => (
+                    {steps.map((step, index, key) => (
                         step.isIngredientStep ? (
-                            <div>
-                                {step.menuStepId === currentMenuStep && (
+                            <React.Fragment key={key}>
+                                {index === currentMenuStep && (
                                     <SelectIngredient
                                         type={step.name}
                                         phrase={menuChoices[step.name].phrase}
@@ -155,10 +143,10 @@ class AppContainer extends Component {
                                         menu={menuChoices}
                                     />
                                 )}
-                            </div>
+                            </React.Fragment>
                         ) : (
-                            <div>
-                                {step.menuStepId === currentMenuStep && currentMenuStep === 0 && (
+                            <React.Fragment key={key}>
+                                {index === currentMenuStep && currentMenuStep === 0 && (
                                     <Welcome
                                         currentMenuStep={currentMenuStep}
                                         menuStepId={0}
@@ -166,7 +154,7 @@ class AppContainer extends Component {
                                         menu={menuChoices}
                                     />
                                 )}
-                                {step.menuStepId === currentMenuStep && currentMenuStep === 1 && (
+                                {index === currentMenuStep && currentMenuStep === 1 && (
                                     <Intro
                                         currentMenuStep={currentMenuStep}
                                         menuStepId={1}
@@ -174,7 +162,7 @@ class AppContainer extends Component {
                                         menuStepBack={this.menuStepBack}
                                     />
                                 )}
-                                {step.menuStepId === currentMenuStep && currentMenuStep === 8 && (
+                                {index === currentMenuStep && currentMenuStep === 8 && (
                                     <FinishOrder
                                         order={order}
                                         clearMenuChoice={this.clearMenuChoice}
@@ -185,7 +173,7 @@ class AppContainer extends Component {
                                         menu={menuChoices}
                                     />
                                 )}
-                                {step.menuStepId === currentMenuStep && currentMenuStep === 9 && (
+                                {index === currentMenuStep && currentMenuStep === 9 && (
                                     <ConfirmationSuccess
                                         clearOrder={this.clearOrder}
                                         order={order}
@@ -193,7 +181,7 @@ class AppContainer extends Component {
                                         menuStepId={9}
                                     />
                                 )}
-                            </div>
+                            </React.Fragment>
                         )
                     ))}
                 </div>
