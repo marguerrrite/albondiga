@@ -25,7 +25,7 @@ class Order extends Component {
     }
 
     handleClick = () => {
-        this.props.clearOrder(3);
+        this.props.clearOrder(2);
     }
 
     render() {

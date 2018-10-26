@@ -9,18 +9,19 @@ import menu from "../menu";
 import '../styles/global.css';
 import ConfirmationSuccess from './ConfirmationSuccess/ConfirmationSuccess';
 
+const emptyOrder = {
+    pasta: [],
+    sauce: [],
+    meat: [],
+    side: [],
+    drink: [],
+    dessert: [],
+}
 class AppContainer extends Component {
     state = {
         menuChoices: menu,
         currentMenuStep: 0,
-        order: {
-            pasta: [],
-            sauce: [],
-            meat: [],
-            side: [],
-            drink: [],
-            dessert: [],
-        },
+        order: emptyOrder,
     };
 
     componentDidMount() {
@@ -28,23 +29,28 @@ class AppContainer extends Component {
         const localStorageRefOrder = localStorage.getItem(`${params.albondigaId}-order`);
         const localStorageRefCurrentMenuStep = localStorage.getItem(`${params.albondigaId}-currentMenuStep`);
 
-        if (localStorageRefOrder || localStorageRefCurrentMenuStep) {
-            this.setState({ order: JSON.parse(localStorageRefOrder) });
-            this.setState({ currentMenuStep: JSON.parse(localStorageRefCurrentMenuStep) });
-        }
-
-        this.ref = base.syncState(`${params.albondigaId}/menuChoices`, {
-            context: this,
-            state: 'menuChoices'
-        });
-
         this.setState({ menuChoices: menu });
+
+        try {
+            if (localStorageRefOrder || localStorageRefCurrentMenuStep) {
+                this.setState({ order: JSON.parse(localStorageRefOrder) });
+                this.setState({ currentMenuStep: JSON.parse(localStorageRefCurrentMenuStep) });
+            }
+
+            this.ref = base.syncState(`${params.albondigaId}/menuChoices`, {
+                state: 'menuChoices'
+            });
+        } catch(e) {}
+
     }
 
     componentDidUpdate() {
         const { params } = this.props.match;
-        localStorage.setItem(`${params.albondigaId}-order`, JSON.stringify(this.state.order));
-        localStorage.setItem(`${params.albondigaId}-currentMenuStep`, JSON.stringify(this.state.currentMenuStep));
+
+        try {
+            localStorage.setItem(`${params.albondigaId}-order`, JSON.stringify(this.state.order));
+            localStorage.setItem(`${params.albondigaId}-currentMenuStep`, JSON.stringify(this.state.currentMenuStep));
+        } catch (e) {}
     }
 
     componentWillUnmount() {
@@ -74,11 +80,8 @@ class AppContainer extends Component {
     };
 
     clearOrder = (desiredStartingStep) => {
-        let currentMenuStep = { ...this.state.currentMenuStep }
-        let order = { ...this.state.order }
-        currentMenuStep = desiredStartingStep;
-        order = {pasta: [], sauce: [], meat: [], side: [], drink: [], dessert: [],}
-        this.setState({ currentMenuStep, order });
+        const currentMenuStep = desiredStartingStep;
+        this.setState({ currentMenuStep, order: emptyOrder });
     }
 
     setOrderItem = (name, emoji, type, menuStepId) => {
@@ -98,95 +101,98 @@ class AppContainer extends Component {
             }, {
                 name: "pasta",
                 isIngredientStep: true,
+                id: 2,
             }, {
                 name: "sauce",
                 isIngredientStep: true,
+                id: 3,
             }, {
                 name: "meat",
                 isIngredientStep: true,
+                id: 4,
             }, {
                 name: "side",
                 isIngredientStep: true,
+                id: 5,
             }, {
                 name: "drink",
                 isIngredientStep: true,
+                id: 6,
             }, {
                 name: "dessert",
                 isIngredientStep: true,
+                id: 7,
             }, {
                 name: "finish",
             }, {
                 name: "success",
             }
         ];
-        //const currentStep = steps[currentMenuStepId];
+
+        const currentStep = steps[currentMenuStep];
 
         return (
-
             <div className="AppContainer">
                 <div className="content">
-                    {steps.map((step, index, key) => (
-                        step.isIngredientStep ? (
-                            <React.Fragment key={key}>
-                                {index === currentMenuStep && (
-                                    <SelectIngredient
-                                        type={step.name}
-                                        phrase={menuChoices[step.name].phrase}
-                                        selections={menuChoices[step.name].choices}
-                                        order={order}
-                                        setMenuChoice={this.setOrderItem}
-                                        clearMenuChoice={this.clearMenuChoice}
-                                        currentMenuStep={currentMenuStep}
-                                        menuStepId={step.menuStepId}
-                                        menuStepForward={this.menuStepForward}
-                                        menuStepBack={this.menuStepBack}
-                                        menu={menuChoices}
-                                    />
-                                )}
-                            </React.Fragment>
-                        ) : (
-                            <React.Fragment key={key}>
-                                {index === currentMenuStep && currentMenuStep === 0 && (
-                                    <Welcome
-                                        currentMenuStep={currentMenuStep}
-                                        menuStepId={0}
-                                        menuStepForward={this.menuStepForward}
-                                        menu={menuChoices}
-                                    />
-                                )}
-                                {index === currentMenuStep && currentMenuStep === 1 && (
-                                    <Intro
-                                        currentMenuStep={currentMenuStep}
-                                        menuStepId={1}
-                                        menuStepForward={this.menuStepForward}
-                                        menuStepBack={this.menuStepBack}
-                                    />
-                                )}
-                                {index === currentMenuStep && currentMenuStep === 8 && (
-                                    <FinishOrder
-                                        order={order}
-                                        clearMenuChoice={this.clearMenuChoice}
-                                        currentMenuStep={currentMenuStep}
-                                        menuStepId={8}
-                                        menuStepForward={this.menuStepForward}
-                                        menuStepBack={this.menuStepBack}
-                                        menu={menuChoices}
-                                    />
-                                )}
-                                {index === currentMenuStep && currentMenuStep === 9 && (
-                                    <ConfirmationSuccess
-                                        clearOrder={this.clearOrder}
-                                        order={order}
-                                        currentMenuStep={currentMenuStep}
-                                        menuStepId={9}
-                                    />
-                                )}
-                            </React.Fragment>
-                        )
-                    ))}
+                    {currentStep.isIngredientStep ? (
+                        <React.Fragment>
+                            <SelectIngredient
+                                type={currentStep.name}
+                                phrase={menuChoices[currentStep.name].phrase}
+                                selections={menuChoices[currentStep.name].choices}
+                                order={order}
+                                setMenuChoice={this.setOrderItem}
+                                clearMenuChoice={this.clearMenuChoice}
+                                currentMenuStep={currentMenuStep}
+                                menuStepId={currentStep.id}
+                                menuStepForward={this.menuStepForward}
+                                menuStepBack={this.menuStepBack}
+                                menu={menuChoices}
+                            />
+                        </React.Fragment>
+                    ) : (
+                        <React.Fragment>
+                            {currentMenuStep === 0 && (
+                                <Welcome
+                                    currentMenuStep={currentMenuStep}
+                                    menuStepId={0}
+                                    menuStepForward={this.menuStepForward}
+                                    menu={menuChoices}
+                                />
+                            )}
+                            {currentMenuStep === 1 && (
+                                <Intro
+                                    currentMenuStep={currentMenuStep}
+                                    menuStepId={1}
+                                    menuStepForward={this.menuStepForward}
+                                    menuStepBack={this.menuStepBack}
+                                />
+                            )}
+                            {currentMenuStep === 8 && (
+                                <FinishOrder
+                                    order={order}
+                                    clearMenuChoice={this.clearMenuChoice}
+                                    currentMenuStep={currentMenuStep}
+                                    menuStepId={8}
+                                    menuStepForward={this.menuStepForward}
+                                    menuStepBack={this.menuStepBack}
+                                    menu={menuChoices}
+                                />
+                            )}
+                            {currentMenuStep === 9 && (
+                                <ConfirmationSuccess
+                                    clearOrder={this.clearOrder}
+                                    order={order}
+                                    currentMenuStep={currentMenuStep}
+                                    menuStepId={9}
+                                />
+                            )}
+                        </React.Fragment>
+                    )}
                 </div>
                 {currentMenuStep > 1 && currentMenuStep < 9 && (
-                    <Order order={order}
+                    <Order
+                        order={order}
                         clearOrder={this.clearOrder}
                         jumpToMenuStep={this.jumpToMenuStep}
                         currentMenuStep={currentMenuStep} />
