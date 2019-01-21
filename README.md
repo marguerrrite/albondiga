@@ -3,7 +3,7 @@
 ##### A dinner menu selection app
 
 
-[Live demo](https://marguerite.io/albondiga/)
+[Live demo](https://margueriteroth.github.io/albondiga/)
 
 I made this little project for someone who loves spaghetti
 and meatballs. The recipient can pick the ingredients making
